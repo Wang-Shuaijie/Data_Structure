@@ -17,7 +17,6 @@ public class Solution60 {
 		List<List<Integer>> res=new ArrayList<>();
 		if(root==null) return res;
 		Queue<TreeNode> q1=new LinkedList<>();
-		Queue<TreeNode> q2=new LinkedList<>();
 		q1.add(root);
 		int level=1;
 		while(!q1.isEmpty()) {

@@ -9,5 +9,9 @@ public class Solution46 {
 		int sum=n;
 		boolean res=(n>0) && ((sum+=get_Sum(n-1))>0);
 		return sum;
+		
+		/*if(n<0) return 0; 
+		if(n==1) return 1;
+		return n+get_Sum(n-1);*/
 	}
 }
