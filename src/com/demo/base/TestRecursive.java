@@ -1,5 +1,9 @@
 package com.demo.base;
-
+/**
+ * µİ¹é²âÊÔ--ì³²¨ÄÇÆõÊıÁĞ
+ * @author WangShuaiJie
+ *
+ */
 public class TestRecursive {
 	public static void main(String[] args) {
 		print(3);

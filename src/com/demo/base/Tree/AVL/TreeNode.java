@@ -1,7 +1,11 @@
 package com.demo.base.Tree.AVL;
 
-import java.util.Stack;
-
+/**
+ * 二叉排序树通过旋转变为平衡二叉树
+ * 旋转的原理详解，请自行查阅
+ * @author WangShuaiJie
+ *
+ */
 public class TreeNode {
 	int value;
 	TreeNode left;
@@ -12,7 +16,24 @@ public class TreeNode {
 	}
 	
 	/**
-	 * 向子树添加节点
+	 * 查询当前节点高度
+	 * @return
+	 */
+	public int getHeight() {
+		return Math.max(left==null?0:left.getHeight(), right==null?0:right.getHeight())+1;
+	}
+	public int leftHeight() {
+		if(left==null) return 0;
+		return left.getHeight();
+	}
+	public int rightHeight() {
+		if(right==null) return 0;
+		return right.getHeight();
+	}
+		
+	
+	/**
+	 * 向子树添加节点，并时刻判断是否平衡（左右子树高度差不大于1）
 	 * @param node
 	 */
 	public void add(TreeNode node) {
@@ -34,7 +55,60 @@ public class TreeNode {
 				this.right.add(node);
 			}
 		}
+		
+		//判断是否平衡
+		if(leftHeight()-rightHeight()>1) {
+			//双旋转
+			if(left!=null && left.leftHeight()<left.rightHeight()) {
+				//先左旋转
+				left.leftRotate();
+				//再右旋转
+				rightRotate();
+			}else {
+			//右旋转	
+				rightRotate();
+			}
+		}
+		if(leftHeight()-rightHeight()<-1) {
+			if(right!=null && right.rightHeight()<right.leftHeight()) {
+				//右
+				right.rightRotate();
+				//左
+				leftRotate();
+			}
+			leftRotate();
+		}
+		
 	}
+	/**
+	 * 右旋转
+	 */
+	public void rightRotate() {
+		//创建一个新节点，值等于当前节点值
+		TreeNode newNode=new TreeNode(this.value);
+		//把新节点的右子树设置成当前节点的右子树
+		newNode.right=this.right;
+		//把新节点的左子树设置为当前节点左子树的右子树
+		newNode.left=this.left.right;
+		//把当前节点的值换为左子节点的值
+		this.value=this.left.value;
+		this.left=this.left.left;
+		//当前节点的右子树设为新节点
+		this.right=newNode;
+	}
+	/**
+	 * 左旋转
+	 */
+	public void leftRotate() {
+		//创建一个新节点，值等于当前节点值
+		TreeNode newNode=new TreeNode(this.value);
+		newNode.left=this.left;
+		newNode.right=this.right.left;
+		this.value=this.right.value;
+		this.right=this.right.right;
+		this.left=newNode;
+	}
+	
 	/**
 	 * 查找节点
 	 * @param value
@@ -79,25 +153,12 @@ public class TreeNode {
 	 */
 	public void inorder() {
 		//递归写法
-		/*if(left!=null) {
+		if(left!=null) {
 			left.inorder();
 		}
 		System.out.print(this.value+" ");
 		if(right!=null) {
 			right.inorder();
-		}*/
-		Stack<TreeNode> stack=new Stack<>();
-		TreeNode root=this;
-		while(root!=null || !stack.isEmpty()) {
-			while(root!=null) {
-				stack.push(root);
-				root=root.left;
-			}
-			if(!stack.isEmpty()) {
-				root=stack.pop();
-				System.out.print(root.value);
-				root=root.right;
-			}
 		}
 	}
 
