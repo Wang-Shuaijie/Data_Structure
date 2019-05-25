@@ -54,7 +54,7 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 			rowEnd--;
 			
 			if(colBegin<=colEnd) {
-				for(int i=rowEnd;i>=rowBegin;i++) {
+				for(int i=rowEnd;i>=rowBegin;i--) {
 					res.add(matrix[i][colBegin]);
 				}
 			}

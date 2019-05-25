@@ -41,7 +41,7 @@ public class Solution20 {
 			
 			//м╛ио
 			if(colBegin<=colEnd) {
-				for(int i=rowEnd;i>=rowBegin;i++) {
+				for(int i=rowEnd;i>=rowBegin;i--) {
 					res.add(matrix[i][colBegin]);
 				}
 				colBegin++;
