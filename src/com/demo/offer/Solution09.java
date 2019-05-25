@@ -1,13 +1,12 @@
 package com.demo.offer;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Solution09 {
 	
 	//不推荐，有越界的风险(从1开始)
 	public static int febonaqcci(int i) {
-		if(i==0) return 0;
+		if(i<=0) return 0;
 		else if(i==1 || i==2) {
 			return 1;
 		}else {
@@ -41,12 +40,20 @@ public class Solution09 {
 	/**
 	 * 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
 	 * 思路：feibonaqcci思想,求第n项数
+	 * 
+	 *             | 1, (n=1)
+        f(n) =     | 2, (n=2)
+                   | f(n-1)+f(n-2) ,(n>2,n为整数)
 	 */
 	public static int febonaqcci3(int i) {
 		if(i==0) return 0;
-		else if(i==1 || i==2) {
+		else if(i==1) {
 			return 1;
-		}else {
+		}
+		else if(i==2) {
+			return 2;
+		}
+		else {
 			return febonaqcci(i-1)+febonaqcci(i-2);
 		}
 	}
