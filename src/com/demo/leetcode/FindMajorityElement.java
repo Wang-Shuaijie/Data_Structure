@@ -7,16 +7,16 @@ import java.util.List;
 
 public class FindMajorityElement {
 	/**
-	 * 给定�?个大小为 n 的数组，找到其中的众数�?�众数是指在数组中出现次数大�? �? n/2 �? 的元素�??
-你可以假设数组是非空的，并且给定的数组�?�是存在众数�?
+	 * 给定大小为 n 的数组，找到其中的众数;众数是指在数组中出现次数大n/2 的元素
+你可以假设数组是非空的，并且给定的数组是存在众数?
 示例 1:
 
 输入: [3,2,3]
 输出: 3
 	 */
 	public int majorityElement(int[] nums) {
-		//根据题目规定众数出现次数大于N/2,先给数组排序，如果第�?个数和中间数相同，则第一个数是众�?
-		//如果�?后一个数和中间数相同，则众数是最后一个数；否则众数为中间�?
+		//根据题目规定众数出现次数大于N/2,先给数组排序，如果第1个数和中间数相同，则第一个数是众数
+		//如果后一个数和中间数相同，则众数是最后一个数；否则众数为中间?
 		if(nums==null || nums.length==0) return -1;
 		Arrays.sort(nums);
 		int mid=nums[nums.length/2];
@@ -42,7 +42,7 @@ public class FindMajorityElement {
 				map.put(nums[i], 1);
 			}
 		}
-		//遍历hashmap,寻找value�?大的�?
+		//遍历hashmap,寻找value最大的?
 		int maxValue=0;
 		for(Integer key:map.keySet()) {
 			int value=map.get(key);

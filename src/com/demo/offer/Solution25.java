@@ -17,16 +17,15 @@ public class Solution25 {
 	}
 	
 	private static void helper(List<List<Integer>> res, List<Integer> list, TreeNode root, int target) {
+		if(root==null) return;
+        list.add(root.val);
+        target=target-root.val;
 		if(target==0 && root.left == null && root.right==null) {
 			res.add(new ArrayList<>(list));
-			return ;
 		}
-		while(root!=null) {
-			list.add(root.val);
-			helper(res, list, root.left, target-root.val);
-			helper(res, list, root.right, target-root.val);
-			list.remove(list.size()-1);
-		}
+		helper(res, list, root.left, target);
+		helper(res, list, root.right, target);
+		list.remove(list.size()-1);
 	}
 	
 /*	ArrayList<ArrayList<Integer>> resultList = new ArrayList<ArrayList<Integer>>();

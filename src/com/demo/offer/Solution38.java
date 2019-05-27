@@ -18,40 +18,46 @@ public class Solution38 {
 	}
 	
 	public static int findFirst(int[] nums,int target) {
-		int start=0;
-		int end=nums.length-1;
-		while(start<=end) {
-			int mid=(end-start)/2+start;
-			if(nums[mid]<target) {
-				start=mid+1;
+		int left=0;
+		int right=nums.length-1;
+		int start=-1;
+		while(left<=right) {
+			int mid=(right-left)/2+left;
+			if(nums[mid]==target) {
+				start=mid;
+				right=mid-1;
+			}else if(nums[mid]>target) {
+			    right=mid-1;
 			}else {
-				end=mid-1;
+				left=mid+1;
 			}
 		}
-		if(nums[start]==target) return start;
-		if(nums[end]==target) return end;
-		return -1;
+
+		return start;
 	}
 	
 	public static int findEnd(int[] nums,int target) {
-		int start=0;
-		int end=nums.length-1;
-		while(start<=end) {
-			int mid=(end-start)/2+start;
-			if(nums[mid]>target) {
-				end=mid-1;
+		int left=0;
+		int right=nums.length-1;
+		int end=-1;
+		while(left<=right) {
+			int mid=(right-left)/2+left;
+			if(nums[mid]==target) {
+				end=mid;
+				left=mid+1;
+			}else if(nums[mid]>target) {
+			    right=mid-1;
 			}else {
-				start=mid+1;
+				left=mid+1;
 			}
 		}
-		if(nums[start]==target) return start;
-		if(nums[end]==target) return end;
-		return -1;
+
+		return end;
 	}
 	
 	public static void main(String[] args) {
-		int[] nums=new int[] {5,7,7,8,8,10};
-		int target=8;
+		int[] nums=new int[] {1,2,3,3,3,3};
+		int target=3;
 		System.out.println(getCount_target(nums, target));
 	}
 	

@@ -2,13 +2,13 @@ package com.demo.leetcode;
 
 public class MaximumSubarray {
 	/**
-	 * For example, given the array [�?2,1,�?3,4,�?1,2,1,�?5,4],
-the contiguous subarray [4,�?1,2,1] has the largest sum = 6.
+	 * For example, given the array [2,1,3,4,1,2,1,5,4],
+the contiguous subarray [4,1,2,1] has the largest sum = 6.
 求连续子数组（包含负数）的最大和
-思路：若和小�?0，则将最大和置为当前值，否则计算�?大和�?
+思路：若和小于0，则将最大和置为当前值，否则计算最大和
 	 */
 	public int maxSubArray(int[] nums) {
-		//dp解法，dp保存子数组的�?
+		//dp解法，dp保存子数组的和
 		int[] dp=new int[nums.length];
 		dp[0]=nums[0];
 		int res=nums[0];
