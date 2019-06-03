@@ -12,6 +12,9 @@ return "blue is sky the".
 	 */
 	
 	public static String reverseWords(String s) {
+		if(s.trim().equals("")){
+            return s;
+        }
 		//利用split分割
 		String res="";
 		//原字符串调用trim()来去除冗余空格，然后调用split()来分隔，分隔符设为"\\s+"，这其实是一个正则表达式，\\s表示空格字符，+表示可以有一个或多个空格字符
@@ -23,12 +26,18 @@ return "blue is sky the".
 	}
 	
 	public static String reverseWords2(String s) {
+		if(s.trim().equals("")){
+            return s;
+        }
 		String[] words = s.trim().split(" +");
 		Collections.reverse(Arrays.asList(words));
 		return String.join(" ", words);
 	}
 	
 	public static String reverseWords3(String s) {
+		if(s.trim().equals("")){
+            return s;
+        }
 		int storeIndex=0, n=s.length();
 		//先将整个字符串翻转，然后将每个单词翻转
 		StringBuilder sb=new StringBuilder(s).reverse();
