@@ -14,33 +14,48 @@ public class Solution45 {
 	 * 加上需要报的数减1，即得到需要出列人的索引，要注意要出列的人是不是最后一个人，要特殊处理。当ArrayList为空，则完成
 	 */
 	
-	public static void yesefu(int totalNum, int countNum) {
-		//初始化人数
-		ArrayList<Integer> start=new ArrayList<>();
-		for(int i=0;i<=totalNum;i++) {
-			start.add(i);
-		}
-		 //从第k个数开始计数
-        int k = 0;
-        while(start.size()>0) {
-        	k=k+countNum;
-        	 //第m人的索引位置
-            k = k % (start.size()) - 1;//因为索引是从0开始，进行取余是因为防止k大于圈中人的总数
-            //判断是否到队尾，即k的大小为start的大小，此时k为-1
-            if(k<0) {
-            	//如果到队尾了，则输出队尾元素
-            	System.out.println(start.get(start.size()-1)+" ");
-            	start.remove(start.size()-1);
-            	k=0;
-            }else {
-            	//否则，直接输出k对应的元素
-                System.out.print(start.get(k)+" ");
-                start.remove(k);
-            }
-        }
+	public static int yesefu(int n, int m) {
+		 if (m == 0 || n == 0) {
+	            return -1;
+	        }
+	        ArrayList<Integer> data = new ArrayList<Integer>();
+	        for (int i = 0; i < n; i++) {
+	            data.add(i);
+	        }
+	        int index = -1;
+	        while (data.size() > 1) {
+//	          System.out.println(data);
+	            index = (index + m) % data.size();
+//	          System.out.println(data.get(index));
+	            data.remove(index);
+	            index--;
+	        }
+	        return data.get(0);
 	}
 	
+	int LastRemaining_Solution(int n, int m) {
+		 if(n==0||m==0)return -1;
+	        int s=0;
+	        for(int i=2;i<=n;i++)
+	        {
+	            s=(s+m)%i;
+	        }   
+	       return s ;
+    }
+	
+	//f[1]=0;
+	//f[i]=(f[i-1]+m)%i;  (i>1) 
+	int LastRemaining_Solution2(int n, int m)
+    {
+        if(n==0)
+            return -1;
+        if(n==1)
+            return 0;
+        else
+            return (LastRemaining_Solution(n-1,m)+m)%n;
+    }
+	
 	public static void main(String[] args) {
-		yesefu(10, 3);
+		System.out.println(yesefu(5, 3));
 	}
 }

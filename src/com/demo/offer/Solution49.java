@@ -10,7 +10,7 @@ public class Solution49 {
 		int sign=1;
 		int i=0;
 		if(str.charAt(0)=='-') {
-			sign=1;
+			sign=-1;
 			i++;
 		}
 		if(str.charAt(0)=='+') {
