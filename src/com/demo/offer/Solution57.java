@@ -17,7 +17,7 @@ public class Solution57 {
 		dummy.next=head;
 		while(pre.next!=null) {
 			ListNode cur=pre.next;
-			while(cur.val==cur.next.val) {
+			while(cur.next!=null && cur.val==cur.next.val) {
 				cur=cur.next;
 			}
 			if(cur!=pre.next) {
