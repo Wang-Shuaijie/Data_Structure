@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author WangShuaiJie
  *
  */
-public class MergeSort {
+public class MregeSort {
 
 	public static void mergeSort(int[] arr,int low,int high) {
 		int middle=(low+high)/2;
