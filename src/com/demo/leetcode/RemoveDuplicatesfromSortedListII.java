@@ -1,6 +1,6 @@
 package com.demo.leetcode;
 
-public class RomoveDuplicatesfromSortedListII {
+public class RemoveDuplicatesfromSortedListII {
 	/**
 	 * Example 1:
 	 * Input: 1->2->3->3->4->4->5

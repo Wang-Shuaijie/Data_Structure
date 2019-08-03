@@ -13,6 +13,8 @@ public class Solution60 {
 	 * 第二层按照从右至左的顺序打印，
 	 * 第三行按照从左到右的顺序打印，依此类推。
 	 */
+	
+	//错解
 	public List<List<Integer>> print(TreeNode root){
 		List<List<Integer>> res=new ArrayList<>();
 		if(root==null) return res;
@@ -37,7 +39,52 @@ public class Solution60 {
 		}
 		return res;
 	}
-		
+	
+	//我们利用两个栈,一个栈从左到右保存元素，一个栈从右到左保存元素。然后访问栈顶元素,弹栈，直到两个栈同时为空。
+	public ArrayList<ArrayList<Integer> > Print(TreeNode pRoot) {
+        ArrayList<ArrayList<Integer>> arrayList = new ArrayList<ArrayList<Integer>>();
+        if( pRoot == null ){
+            return arrayList;
+        }
+        
+        Stack<TreeNode> s1 = new Stack<TreeNode>();
+        s1.add( pRoot );
+        Stack<TreeNode> s2 = new Stack<TreeNode>();
+        while( !s1.empty() || !s2.empty()){
+            if(!s1.empty()){
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                while(!s1.empty()){
+                    TreeNode node = s1.pop();
+                    list.add(node.val);
+                    if(node.left != null){
+                        s2.add(node.left);
+                    }
+                    if(node.right != null){
+                        s2.add(node.right);
+                    }
+                }
+                arrayList.add(list);
+            }else{
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                while(!s2.empty()){
+                
+                    TreeNode node = s2.pop();
+                    list.add(node.val);
+                
+                    if(node.right != null){
+                        s1.add(node.right);
+                    }
+                    if(node.left != null){
+                        s1.add(node.left);
+                    }
+                }
+                arrayList.add(list);
+            }
+        }
+       return arrayList;
+        
+    }
+	
 	
 	
 	class TreeNode{
