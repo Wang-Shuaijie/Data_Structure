@@ -1,4 +1,4 @@
-package com.demo.Campus;
+package com.demo.campus;
 
 import java.util.Arrays;
 import java.util.Scanner;

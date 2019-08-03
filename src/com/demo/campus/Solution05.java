@@ -1,4 +1,4 @@
-package com.demo.Campus;
+package com.demo.campus;
 
 public class Solution05 {
 
