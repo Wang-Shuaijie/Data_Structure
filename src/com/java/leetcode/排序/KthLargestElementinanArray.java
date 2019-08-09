@@ -66,9 +66,9 @@ public class KthLargestElementinanArray {
 		quickSort(nums, j+1, r);
 	}
 	
-//	public static void main(String[] args) {
-//		int[] arr=new int[] {5,7,3,9,8,4,0,6,7,2};
-//		quickSort(arr, 0, arr.length-1);
-//		System.out.println(Arrays.toString(arr));
-//	}
+	public static void main(String[] args) {
+		int[] arr=new int[] {5,7,3,9,8,4,0,6,7,2};
+		quickSort(arr, 0, arr.length-1);
+		System.out.println(Arrays.toString(arr));
+	}
 }
