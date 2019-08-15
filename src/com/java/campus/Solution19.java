@@ -28,7 +28,7 @@ public class Solution19 {
 			}
 			if(colStart<=colEnd) {
 				for(int i=rowEnd;i>=rowStart;i--) {
-					System.out.print(matrix[i][colStart]);
+					System.out.print(matrix[i][colStart]+" ");
 				}
 				colStart++;
 			}

@@ -1,4 +1,10 @@
 package com.java.campus;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
 /**
  * 
 12
@@ -24,5 +30,28 @@ package com.java.campus;
  *
  */
 public class Solution23 {
-
+	public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        int[] nums=new int[n];
+        for(int i=0;i<n;i++){
+            nums[i]=sc.nextInt();
+        }
+        ArrayList<Integer> list=getMultiply(nums);
+        Collections.sort(list);
+        System.out.println(list.get(list.size()-k));
+    }
+     
+    public static ArrayList<Integer> getMultiply(int[] nums){
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        for(int i=0;i<nums.length;i++){
+            int j=i+1;
+            while(j<nums.length){
+                list.add(nums[i]*nums[j]);
+                j++;
+            }
+        }
+        return list;
+    }
 }

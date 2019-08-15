@@ -1,4 +1,7 @@
 package com.java.campus;
+
+import java.util.Scanner;
+
 /**
  * 从业 666 年的 BILIBILI 网络安全工程师 KindMo 最近很困惑，公司有一个业务总是受到 SSRF 攻击。
  * 请帮他写一个程序，判断输入的字符串是否属于内网IP，用于防御该漏洞。
@@ -20,5 +23,31 @@ package com.java.campus;
  *
  */
 public class Solution17 {
-	
+	public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String ip=sc.nextLine();
+        if(validIp(ip)){
+            System.out.println(1);
+        }else{
+            System.out.println(0);
+        }
+    }
+     
+    private static boolean validIp(String ip){
+        String[] str=ip.split("\\.");
+        if(str.length!=4) return false;
+        if(Integer.valueOf(str[0])==10) {
+        	return true;
+        }else if(Integer.valueOf(str[0])==172) {
+        	if(Integer.valueOf(str[1]) >= 16 && Integer.valueOf(str[1]) <= 32) {
+        		return true;
+        	}else {
+        		return false;
+        	}
+        }else if(Integer.valueOf(str[0])==192 && Integer.valueOf(str[1])==168) {
+        	return true;
+        }else {
+            return false;
+        }
+    }
 }

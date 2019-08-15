@@ -1,15 +1,25 @@
-package com.java.campus;
+package com.java.leetcode;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
- *  对于一个链表 L: L0→L1→…→Ln-1→Ln,
-将其翻转成 L0→Ln→L1→Ln-1→L2→Ln-2→…
+ * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
 
-输入是一串数字，请将其转换成单链表格式之后，再进行操作 
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+Example 1:
+
+Given 1->2->3->4, reorder it to 1->4->2->3.
+
+Example 2:
+
+Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
  * @author WangShuaiJie
  *
  */
-public class Solution22 {
-	
+public class ReorderList {
 	public void reorderList(ListNode head) {
 		if(head==null || head.next==null) return ;
 		ListNode slow=head;
@@ -37,6 +47,7 @@ public class Solution22 {
 		}
 		
 	}
+	
 	private ListNode reverse(ListNode head) {
 		ListNode p1=null;
 		ListNode p2=head;
@@ -50,11 +61,30 @@ public class Solution22 {
 		return p1;
 	}
 	
-	class ListNode{
-		int val;
-		ListNode next;
-		public ListNode(int x) {
-			x=val;
+	
+	
+	
+	
+	
+	
+	public void reorderList2(ListNode head) {
+		if(head==null || head.next==null) return ;
+		Deque<ListNode> stack=new ArrayDeque<ListNode>();
+		ListNode ptr=head;
+		while(ptr!=null) {
+			stack.push(ptr);
+			ptr=ptr.next;
 		}
+		int cnt=(stack.size()-1)/2;
+		ptr=head;
+		while(cnt>0) {
+			ListNode top=stack.pop();
+			ListNode tmp=ptr.next;
+			ptr.next=top;
+			top.next=tmp;
+			ptr=tmp;
+			cnt--;
+		}
+		stack.pop().next=null;
 	}
 }
